@@ -23,13 +23,18 @@
 >5. Gestión de Datos
 
 4. Indique las asignaturas del área de sistemas de información.
->Asignatiras
->Algoritmos y Estructura de Datos
->Matemática Discreta
+>Analisis de sistemas
+>
 >Sistemas y Organizaciones
+>
+>Diseño de Sistemas
+>
+>Administracion de recursos
+>
+>Projecto Final
 
 5. Indique el paradigma de programación aplicado en primer año de la carrera.
->El Paradigma de programacion usado en primer año es el estructurado y esta basado en utilizar funciones o subrutinas y unicamente usando como estructutas de control la Secuencial, Condicional y la de Iteración
+>El Paradigma de programacion usado en primer año es el imperativo.
 
 6. Defina abstracción.
 >Separación de un elemento de su contexto, dejar de lado los detalles para enfocar en lo importante
@@ -93,6 +98,7 @@
 10. Diseñe un algoritmo que dado un arreglo de naturales a y su longitud n calcule el promedio
 
 ```go
+#Codigo en GOlang
 package main
 
 import (
