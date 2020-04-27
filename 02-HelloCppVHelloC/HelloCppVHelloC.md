@@ -13,7 +13,7 @@
 
 #### Hipótesis de trabajo que surgen luego de leer el enunciado.
 
-> Concientizar el uso actúal del lenguaje c en el dia a dia.
+> Observar todos los pasos de analisis Léxico, Sintáctico y Semántico del proceso de compilacion del lenguaje C y C++. Explicarlos y ver las diferencias que presentan en cada uno.
 
 #### Resolución
 
