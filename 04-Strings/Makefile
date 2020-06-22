@@ -1,13 +1,13 @@
-SOURCE = hello.c
-BIN = hello.exe
-OBJ = hello.o
-CC = gcc
-CFLAGS = -Wall -std=c18
+CC=gcc
+CFLAGS=-I.
 DEPS = String.h
+OBJ = String.o StringTest.o 
+BIN = StringTest
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(BIN): $(OBJ)
-	$(CC) $(OBJ) -o $(BIN) $(CFLAGS)
-run: $(BIN)
-	$(BIN)
-$(OBJ): $(SOURCE)
-	$(CC) -c $(SOURCE) -o $(OBJ) $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+## https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
