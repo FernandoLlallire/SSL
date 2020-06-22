@@ -28,6 +28,11 @@ char* Concat(const char string_1[], const char string_2[]){
  int string_1Length = GetLength(string_1);
  int totalSize = string_1Length + GetLength(string_2);
  char* newString = (char*)malloc(totalSize + 1);
+   if(newString == NULL)                 
+    {
+        printf("Error! memory not allocated.");
+        exit(0);
+    }
  for (int i=0; i < string_1Length; i++){
   newString[i] = string_1[i];
  }
