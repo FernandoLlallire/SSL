@@ -1,5 +1,7 @@
 #include "String.h"
 #include <assert.h>
+#include <stdio.h>
+#include <string.h>
 
 int main(void){
     //Testeamos el GetLength
@@ -8,6 +10,9 @@ int main(void){
     assert(IsEmpty("mockString") == false);
     assert(IsEmpty("") == true);
     //Testeamos el Power
-    assert(Power("mockString",2) == "mockStringmockString");
-    fprintf("%s", Power("yanina es asu !", 5));
+    assert(strcmp(Power("mockString",2), "mockStringmockString") == 0);
+    assert(strcmp(Power("mockString",2), "anotherMock") != 0);
+    //Testeamos el Concat
+    assert(strcmp(Concat("mock","String"), "mockString") == 0);
+    assert(strcmp(Concat("mock","String"), "anotherMock") != 0);
 }
