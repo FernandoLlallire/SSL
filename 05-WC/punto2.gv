@@ -1,0 +1,21 @@
+digraph punto2 {
+    node_0 [label="||"];
+    node_1 [label="=="];
+    node_2 [label="c"];
+    node_3 [label="' '"];
+    node_4 [label="=="];
+    node_5 [label="c"];
+    node_6 [label="'\\n'"];
+    node_7 [label="=="];
+    node_8 [label="c"];
+    node_9 [label="'\\t'"]
+    node_10 [label="||"];
+    node_0 -> node_1 -> node_2;
+    node_0 -> node_10 -> node_7;
+    node_1 -> node_3;
+    node_4 -> node_5;
+    node_4 -> node_6;
+    node_10 -> node_4;
+    node_7 -> node_8;
+    node_7 -> node_9;
+}

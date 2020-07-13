@@ -1,0 +1,7 @@
+digraph maquina_estados {
+  node [shape = doublecircle];
+  IN -> OUT  [label="c == ' '\n|| c == '\\ n'\n|| c == '\\t'"];
+  OUT -> OUT [label="c == ' '\n|| c == '\\ n'\n|| c == '\\t'"];
+  OUT ->  IN[label="not(c == ' '\n|| c == '\\ n'\n||c == '\\t')"];
+
+}
