@@ -28,6 +28,7 @@ c. Dibujar el árbol de expresión para la expresión de control del segundo if:
 
 a.Describir  en  lenguaje  dot    [DOT2015]  y  dentro  del  archivo  wc.gv  lamáquina de estado que resuelve el problema planteado.
 
+
 b.Formalizar  la  máquina  de  estados  como  una  n-upla,  basarse  en  elCapítulo #1 del Volumen #3 de [MUCH2012].
 ## A = (Q, ∑, T, q0, F)
 
@@ -36,6 +37,7 @@ b.Formalizar  la  máquina  de  estados  como  una  n-upla,  basarse  en  elCap�
 #### q0 = OUT
 #### F  = {IN, OUT}
 #### T  =  {
+#### IN => NOT(c == ' '|| c == '\ n'|| c == '\t') => IN,    
 #### IN => (c == ' '|| c == '\ n'|| c == '\t') => OUT,
 #### OUT => (c == ' '|| c == '\ n'|| c == '\t') => OUT, 
 #### OUT => NOT(c == ' '|| c == '\ n'|| c == '\t') => IN,
@@ -48,7 +50,7 @@ a. Implementación #1: Una variable para el estado actual.
 i.Escribir el programa wc-1-enum-switch.c que siga la Implementación#1, variante enum y switch.Esta implementación es la regularización de la implementación de lasección 1.5.4 de [KR1988]. Los estados son valores de una variable ylas transiciones son la selección estructurada y la actualización de esavariable. Esta versión es menos eficiente que la versión de [KR1988],pero su regularidad permite la automatización de la construcción delprograma  que  implementa  la  máquina  de  estados.  Además  de  laregularidad, esta versión debe:
 > Utilizar  typedef  y  enum  en  vez  de  define,  de  tal  modo  que  lavariable estado se pueda declarar de la siguiente manera: States = Out;
 > 
-> Utilizar switch en vez de if.36
+> Utilizar switch en vez de if.
 
 ii.Responder en readme.md: Indicar ventajas y desventajas de la versiónde [KR1988] y de esta implementción.
 
@@ -70,4 +72,19 @@ b. Implementación #2: Sentencias goto (sí, el infame goto)
 
 **Actualmente se usa mucho los labels del goto en asembler para poder hacer un salto a otras lineas de codigo, y como lenguaje actual en el que se puede ver un uso importante del mismo es en Golang, el cual es un lenguaje google.**
 
+c. Implementación #3:  Funciones Recursivas
+> i.Leer la sección 4.10 Recursividad de [KR1988].
+> 
+> ii.Responder en readme.md: ¿Es necesario que las funciones accedana a contadores? Si es así, ¿cómo hacerlo?.Leer  la  sección  1.10 Variables Externas y Alcance  y  4.3 VariablesExternas de [KR1988].
+> 
+> iii.Escribir el programa, wl-3-rec.c que siga la implementación #3.En  esta  implementación  los  estados  son  funciones recursivas  y  lastransiciones son la selección estructurada y la invocación recursiva.
+
+**No es necesario que las funciones accedan a contadores.**
+
+d. Implementación #X:</br>
+Es  posible  diseñar  más  implementaciones.  Por  ejemplo,  una  basadaen  una  tabla  que  defina  las  transiciones  de  la  máquina.  En  ese  caso,el  programa  usaría  la  tabla  para  lograr  el  comportamiento  deseado.  Elobjetivo  de  este  punto  es  diseñar  una  implementación  diferente  a  lasimplementaciones #1, #2, y #3.</br>
+> i.Diseñar una nueva implementación e indicar en Readme.md cómo esaimplementación representa los estados y cómo las transiciones.
+> 
+> ii.Escribir el programa, wl-x.c que siga la nueva implementación.
+> 
 #### Hipótesis de trabajo que surgen luego de leer el enunciado.

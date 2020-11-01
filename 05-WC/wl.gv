@@ -1,0 +1,11 @@
+digraph maquina_de_estados {
+	rankdir=LR;
+	ranksep=1;
+	nodesep=0.5;
+
+	node [shape = doublecircle]; OUT IN
+	OUT -> OUT [ label = "' ' || '\\t' || '\\n'"  color="grey24" ];
+	OUT -> IN [ label = "!(c == ' ' || c == '\\ n' || c == '\\t')\nputchar(\'\c\');" color="grey24" ];
+	IN -> IN [ label = "!(c == ' ' || c == '\\ n' || c == '\\t')\nputchar(\'\c\');" color="grey24" ];
+	IN -> OUT [ label = "' ' || '\\t' || '\\n'\nputchar(\'\\n\');" color="grey24" ];
+}
