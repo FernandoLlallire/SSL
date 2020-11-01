@@ -27,7 +27,7 @@ c. Dibujar el árbol de expresión para la expresión de control del segundo if:
 2.Máquina de Estado:
 
 a.Describir  en  lenguaje  dot    [DOT2015]  y  dentro  del  archivo  wc.gv  lamáquina de estado que resuelve el problema planteado.
-
+![Diagrama3](./wl.png)
 
 b.Formalizar  la  máquina  de  estados  como  una  n-upla,  basarse  en  elCapítulo #1 del Volumen #3 de [MUCH2012].
 ## A = (Q, ∑, T, q0, F)
