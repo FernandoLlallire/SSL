@@ -142,7 +142,7 @@ int factor() {
         Match(tokens_right_bracket);
         return sintaxError? : resultado;
     } else {
-        sintaxError = true;
+        //sintaxError = true;
         if (expresionToken == tokens_new_line) {
             ungetc('\n', stdin);
         } else if (expresionToken == tokens_fdt) {
