@@ -1,8 +1,11 @@
+#pragma once
 #include "stdbool.h"
 #include "ctype.h"
 #include "stdio.h"
 #include "string.h"
+#include "stdlib.h"
 
+#define lexemaSize 100
 typedef enum{
     tokens_add,
     tokens_identifier,
@@ -19,11 +22,10 @@ typedef enum{
 } Tokens;
 
 int index_scaner = 0;
-const int lexemaSize = 100;
 
 char lexema[lexemaSize];
 
-const char * getLexema();
+char * getLexema();
 
 void writeToken(char);
 void lexicalError();
@@ -38,6 +40,8 @@ bool isFDT(char);
 bool isRightBracket(char);
 bool isLeftBracket(char);
 bool isEquals(char);
+bool isNewLine(char);
+bool isInterpreter(char);
 bool flagToken = true;
 
 Tokens token;

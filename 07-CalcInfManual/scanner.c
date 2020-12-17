@@ -98,7 +98,7 @@ void writeToken(char c) {
   return;
 }
 
-const char * getLexema() {
+char * getLexema() {
   return lexema;
 }
 
@@ -129,7 +129,7 @@ void isIdentifier() {
  * Aca vamos a tomar un lexema que es numero (Ver reglas en index.md)
 */
 void isNumber() {
-  char c = getChar();
+  char c = getchar();
   if (isdigit(c)) {
     writeToken(c);
     isNumber();

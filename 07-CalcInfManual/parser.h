@@ -1,3 +1,4 @@
+#pragma once
 #include "semantic.h"
 
 typedef enum {
@@ -17,4 +18,10 @@ int sintaxError = false;
 int parser();
 int listOfExpresions();
 int expresion();
+int termino();
+int factor();
+
+void sentence();
+void Match();
+void listOfSentences();
 ParserState setStatus(Tokens);

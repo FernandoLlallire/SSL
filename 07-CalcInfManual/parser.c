@@ -46,7 +46,7 @@ void sentence() {
         printf("variable $%s = %d", getLexema(), getVariable(getLexema()));
     }
 
-    return false;
+    return;
 }
 
 //expreson = value1 + value2
