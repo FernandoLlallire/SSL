@@ -8,8 +8,5 @@ typedef struct {
 
 Variable variables[lexemaSize];
 
-//Como no podemos saber cuantos elementos hay populados tenemos que hacer esto 
-int quantityOfVariables = 0;
-
 void addVariable(char [], int);
 int getVariable(char []);

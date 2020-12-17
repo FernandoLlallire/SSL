@@ -1,5 +1,9 @@
 #include "semantic.h"
 
+//Como no podemos saber cuantos elementos hay populados tenemos que hacer esto 
+int quantityOfVariables = 0;
+
+
 void addVariable(char identifier[lexemaSize], int number) {
     for(int i = 0; i< quantityOfVariables ; i++) {
         if (strcmp(variables[i].variable, identifier) == 0) {
@@ -18,6 +22,6 @@ int getVariable(char identifier[lexemaSize]) {
             return variables[i].number;
         }
     }
-    printf("variable not defined");
-    return 0;
+    printf("variable %s no definida\n", identifier);
+    return -1;
 }

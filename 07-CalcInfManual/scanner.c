@@ -1,6 +1,9 @@
 #include "scanner.h"
 
+int index_scaner = 0;
 
+char lexema[lexemaSize];
+bool flagToken = true;
 
 Tokens GetNextToken() {
   if (flagToken) {
@@ -12,6 +15,7 @@ Tokens GetNextToken() {
 Tokens scanner() {
   clearLexema();
   char c = getchar();
+  printf("valor del caracter en el scanner = '%c'\n",c);
   if (isFDT(c)) {
     writeToken(c);
     return tokens_fdt;
@@ -38,10 +42,13 @@ Tokens scanner() {
   } else if (isRightBracket(c)) { 
     writeToken(c);
     endToken();
+    ungetc(')',stdin);
     return tokens_right_bracket;
   } else if (isNewLine(c)) {
+    writeToken(c);
     return tokens_new_line;
   } else if (isspace(c)) {
+    //printf("tomo el carcter como espacio \n");
     return GetNextToken();
   } else if (isEquals(c)) {
     writeToken(c);
@@ -53,6 +60,7 @@ Tokens scanner() {
     return tokens_interpreter;
   } else {
     lexicalError();
+    printf("caracter invalido '%c'\n", c);
     flagToken = false;
     return tokens_invalid;
   }
@@ -121,6 +129,8 @@ void isIdentifier() {
     isIdentifier();
   } else {
     endToken();
+    // Esto se hace para poder ver los caracteres de EOF y \n
+    ungetc(c, stdin);
     return;
   }
 }
@@ -135,6 +145,8 @@ void isNumber() {
     isNumber();
   } else {
     endToken();
+        // Esto se hace para poder ver los caracteres de EOF y \n
+    ungetc(c, stdin);
     return;
   }
 }

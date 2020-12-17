@@ -1,4 +1,3 @@
-#pragma once
 #include "stdbool.h"
 #include "ctype.h"
 #include "stdio.h"
@@ -21,10 +20,6 @@ typedef enum{
     tokens_new_line
 } Tokens;
 
-int index_scaner = 0;
-
-char lexema[lexemaSize];
-
 char * getLexema();
 
 void writeToken(char);
@@ -42,7 +37,7 @@ bool isLeftBracket(char);
 bool isEquals(char);
 bool isNewLine(char);
 bool isInterpreter(char);
-bool flagToken = true;
+
 
 Tokens token;
 Tokens scanner();

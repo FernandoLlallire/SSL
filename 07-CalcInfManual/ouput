@@ -1,0 +1,43 @@
+Estoy iniciando una nueva sentencia
+valor del caracter en el scanner = 'a'
+valor del caracter en el scanner = ' '
+valor del caracter en el scanner = '='
+Entre a trabjar en la expresion 
+Entre a trabajar en el termino
+Entre a trabajar en el factor
+valor del caracter en el scanner = ' '
+valor del caracter en el scanner = '('
+factor devuelve (
+Entre a trabjar en la expresion 
+Entre a trabajar en el termino
+Entre a trabajar en el factor
+valor del caracter en el scanner = '2'
+factor devuelve el numero 2
+valor del caracter en el scanner = ' '
+valor del caracter en el scanner = '+'
+despues del termino() en expresion()
+valor del caracter en el scanner = '+'
+valor del token 0
+Entre a trabjar en la expresion 
+Entre a trabajar en el termino
+Entre a trabajar en el factor
+valor del caracter en el scanner = ' '
+valor del caracter en el scanner = '3'
+factor devuelve el numero 3
+valor del caracter en el scanner = ')'
+despues del termino() en expresion()
+valor del caracter en el scanner = ')'
+valor del token 8
+Expresion detecto un ) en stdin
+Expresion retorna el valor 8 por que le llego un ')'
+Expresion retorna el valor compuesto 2 + 8
+El resultado del parentesis es  = 10
+valor del caracter en el scanner = ')'
+valor del caracter en el scanner = ')'
+despues del termino() en expresion()
+valor del caracter en el scanner = ')'
+valor del token 8
+Expresion detecto un ) en stdin
+Expresion retorna el valor 8 por que le llego un ')'
+Error en la sintaxis 
+valor del caracter en el scanner = ')'

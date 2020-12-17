@@ -14,7 +14,6 @@ typedef enum{
   result_fail
 } Result;
 
-int sintaxError = false;
 int parser();
 int listOfExpresions();
 int expresion();
