@@ -23,4 +23,6 @@ int factor();
 void sentence();
 void Match();
 void listOfSentences();
+
+Tokens updateToken();
 ParserState setStatus(Tokens);

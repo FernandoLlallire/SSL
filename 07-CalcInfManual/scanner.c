@@ -13,39 +13,44 @@ Tokens GetNextToken() {
 }
 
 Tokens scanner() {
-  clearLexema();
   char c = getchar();
   printf("valor del caracter en el scanner = '%c'\n",c);
   if (isFDT(c)) {
+    clearLexema();
     writeToken(c);
     return tokens_fdt;
   } else if (isalpha(c)) {
+    clearLexema();
     writeToken(c);
     isIdentifier();
     return tokens_identifier;
   } else if (isdigit(c)) {
+    clearLexema();
     writeToken(c);
     isNumber();
     return tokens_number;
   } else if (isMultiply(c)) {
+    clearLexema();
     writeToken(c);
     endToken();
     return tokens_multiply;
   } else if (isAdd(c)) {
+    clearLexema();
     writeToken(c);
     endToken();
     return tokens_add;
   } else if (isLeftBracket(c)) {
+    clearLexema();
     writeToken(c);
     endToken();
     return tokens_left_bracket;
   } else if (isRightBracket(c)) { 
-    endToken();
+    //endToken();
     //ungetc(')',stdin);
-    writeToken(c);
+    //writeToken(c);
     return tokens_right_bracket;
   } else if (isNewLine(c)) {
-    writeToken(c);
+    //writeToken(c);
     endToken();
     return tokens_new_line;
   } else if (isspace(c)) {

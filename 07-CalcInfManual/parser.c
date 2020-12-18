@@ -1,7 +1,7 @@
 #include "parser.h"
 
 int sintaxError = false;
-
+int isExpresionInsideParentesis = false;
 
 int parser(){
     listOfSentences();
@@ -65,20 +65,18 @@ int expresion() {
     value1 = termino();
     printf("despues del termino() en expresion()\n");
     expresionToken = GetNextToken();
-    if(expresionToken == tokens_right_bracket) {
-        int tokenDespuesParentesis = GetNextToken();
-        if (tokenDespuesParentesis == tokens_add) {
-            ungetc('+', stdin);
-        }
-        if (tokenDespuesParentesis == tokens_new_line) {
-            ungetc('\n', stdin);
-            return value1;
-        }
-        if (expresionToken == tokens_fdt) {
-            ungetc(EOF, stdin);
-            printf("Expresion retorna el valor %d por que llego un fdt\n", value1);           
-            return value1;
-        }
+    printf("token en expresion es %d\n", expresionToken);
+    if(expresionToken == tokens_right_bracket && isExpresionInsideParentesis) {
+        isExpresionInsideParentesis = false;
+        //int tokenDespuesParentesis = GetNextToken();
+        //if (tokenDespuesParentesis == tokens_add) {
+          //  ungetc('+', stdin);
+            return value1; // para devolver el valor que tiene la expresion
+        //}
+        //if (tokenDespuesParentesis == tokens_multiply) {
+        //    ungetc('*', stdin);
+        //    return value1;
+       // }
     }
     /* Si hay un \n se lo devuelve al stream de stdin para que 
        listOfCentences llame a centence()*/
@@ -87,14 +85,15 @@ int expresion() {
         ungetc('\n', stdin);
         return value1;
     } else if (expresionToken == tokens_add) {
+        printf("expresion encontro un caracter + y empieza a procesar expresion para obtener otro termino");
         int valor2= expresion();
         printf("Expresion retorna el valor compuesto %d + %d\n", value1, valor2);
         return value1 + valor2;
-    } else if(expresionToken == tokens_right_bracket){
-        printf("Expresion detecto un ) en stdin\n");
-        ungetc(')', stdin);
-        printf("Expresion retorna el valor %d por que le llego un ')'\n", value1);
-        return value1;
+//    } else if(expresionToken == tokens_right_bracket){
+//        printf("Expresion detecto un ) en stdin\n");
+//        ungetc(')', stdin);
+//        printf("Expresion retorna el valor %d por que le llego un ')'\n", value1);
+//        return value1;
     /* Si hay un end of file se devuelve EOF al stream de stdin para que 
        podamos devolver el resultado previo y que listOfCentences se encargue de 
        manejar ese token*/
@@ -152,6 +151,18 @@ int termino() {
 int factor() {
     printf("Entre a trabajar en el factor\n");
     Tokens expresionToken = GetNextToken();
+    printf("token en factor es %d\n", expresionToken);
+    if(isExpresionInsideParentesis) {
+        if (expresionToken == tokens_right_bracket) {
+            isExpresionInsideParentesis = false;
+            expresionToken = updateToken();
+        }
+    } else if (expresionToken == tokens_new_line) {
+        ungetc('\n', stdin);
+        return 0;
+    } else if (expresionToken == tokens_fdt) {
+        ungetc(EOF, stdin);
+    }
     if (expresionToken == tokens_number) {
         printf("factor devuelve el numero %s\n", getLexema());
         return atoi(getLexema());
@@ -159,20 +170,21 @@ int factor() {
        printf("devuefactor devuelvelvp VARIABLE\n");
         return getVariable(getLexema());
     } else if (expresionToken == tokens_left_bracket) {
+        isExpresionInsideParentesis = true;
         printf("factor devuelve (\n");
         int resultado = expresion();
         printf("El resultado del parentesis es  = %d\n", resultado);
-        Match(tokens_right_bracket);
-        return sintaxError? : resultado;
+        return resultado;
     } else {
-        //sintaxError = true;
-        if (expresionToken == tokens_new_line) {
-            ungetc('\n', stdin);
-        } else if (expresionToken == tokens_fdt) {
-            ungetc(EOF, stdin);
-        } else if (expresionToken == tokens_right_bracket) {
-            ungetc(')', stdin);
-        }
+        sintaxError = true;
+        printf("Error en factor\n");
+//        if (expresionToken == tokens_new_line) {
+//            ungetc('\n', stdin);
+ //       } else if (expresionToken == tokens_fdt) {
+ //           ungetc(EOF, stdin);
+//        } else if (expresionToken == tokens_right_bracket) {
+//            ungetc(')', stdin);
+//        }
         return 0;
     }
 }
@@ -189,4 +201,12 @@ ParserState setStatus(Tokens token){
         return parser_number;
     }
        return parser_character;
+}
+
+Tokens updateToken(){
+    if(isdigit(getLexema())) {
+        return tokens_number; 
+    } else if (isalpha(getLexema())) {
+        return tokens_identifier;
+    }
 }
