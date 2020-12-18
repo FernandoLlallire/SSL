@@ -36,6 +36,7 @@ void sentence() {
         Match(tokens_equals);
         //Match(tokens_number);
         number = expresion();
+        printf("El number en sentence es %d\n", number);
         if(sintaxError) {
             printf("Error en la sintaxis \n");
             return; 
@@ -64,6 +65,21 @@ int expresion() {
     value1 = termino();
     printf("despues del termino() en expresion()\n");
     expresionToken = GetNextToken();
+    if(expresionToken == tokens_right_bracket) {
+        int tokenDespuesParentesis = GetNextToken();
+        if (tokenDespuesParentesis == tokens_add) {
+            ungetc('+', stdin);
+        }
+        if (tokenDespuesParentesis == tokens_new_line) {
+            ungetc('\n', stdin);
+            return value1;
+        }
+        if (expresionToken == tokens_fdt) {
+            ungetc(EOF, stdin);
+            printf("Expresion retorna el valor %d por que llego un fdt\n", value1);           
+            return value1;
+        }
+    }
     /* Si hay un \n se lo devuelve al stream de stdin para que 
        listOfCentences llame a centence()*/
        printf("valor del token %d\n", expresionToken);
@@ -74,17 +90,17 @@ int expresion() {
         int valor2= expresion();
         printf("Expresion retorna el valor compuesto %d + %d\n", value1, valor2);
         return value1 + valor2;
+    } else if(expresionToken == tokens_right_bracket){
+        printf("Expresion detecto un ) en stdin\n");
+        ungetc(')', stdin);
+        printf("Expresion retorna el valor %d por que le llego un ')'\n", value1);
+        return value1;
     /* Si hay un end of file se devuelve EOF al stream de stdin para que 
        podamos devolver el resultado previo y que listOfCentences se encargue de 
        manejar ese token*/
     } else if (expresionToken == tokens_fdt) {
         ungetc(EOF, stdin);
-        printf("Expresion retorna el valor %d por que llego un fdt\n", value1);
-        return value1;
-    } else if(expresionToken == tokens_right_bracket){
-        printf("Expresion detecto un ) en stdin\n");
-        ungetc(')', stdin);
-        printf("Expresion retorna el valor %d por que le llego un ')'\n", value1);
+        printf("Expresion retorna el valor %d por que llego un fdt\n", value1);           
         return value1;
     }else {
         sintaxError = true;
@@ -98,6 +114,7 @@ int termino() {
     int value1;
     value1 = factor();
     expresionToken = GetNextToken();
+    printf("token en termino es %d\n", expresionToken);
     /* Si hay un \n se lo devuelve al stream de stdin para que 
        listOfCentences llame a centence()*/
     if (expresionToken == tokens_new_line) {
@@ -113,14 +130,20 @@ int termino() {
         ungetc('$', stdin);
         return value1;
     } else if (expresionToken == tokens_multiply) {
-        return value1 * expresion();
+        return value1 * termino();
     /* Si hay un end of file se devuelve EOF al stream de stdin para que 
        podamos devolver el resultado previo y que listOfCentences se encargue de 
        manejar ese token*/
     } else if (expresionToken == tokens_fdt) {
         ungetc(EOF, stdin);
         return value1;
+    } else if(expresionToken == tokens_right_bracket){
+        printf("termino detecto un ) en stdin\n");
+        ungetc(')', stdin);
+        printf("termino retorna el valor %d por que le llego un ')'\n", value1);
+        return value1;        
     } else {
+        printf("errror de sintaxis en termino\n ");
         sintaxError = true;
     }
 }

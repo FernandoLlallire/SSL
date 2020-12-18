@@ -40,12 +40,13 @@ Tokens scanner() {
     endToken();
     return tokens_left_bracket;
   } else if (isRightBracket(c)) { 
-    writeToken(c);
     endToken();
-    ungetc(')',stdin);
+    //ungetc(')',stdin);
+    writeToken(c);
     return tokens_right_bracket;
   } else if (isNewLine(c)) {
     writeToken(c);
+    endToken();
     return tokens_new_line;
   } else if (isspace(c)) {
     //printf("tomo el carcter como espacio \n");
