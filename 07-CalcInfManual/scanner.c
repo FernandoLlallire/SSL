@@ -14,7 +14,6 @@ Tokens GetNextToken() {
 
 Tokens scanner() {
   char c = getchar();
-  printf("valor del caracter en el scanner = '%c'\n",c);
   if (isFDT(c)) {
     clearLexema();
     writeToken(c);
