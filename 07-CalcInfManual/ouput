@@ -1,2 +1,8 @@
-Variable var1 asignada con el valor 5
-Variable var3 asignada con el valor 10
+Variable var1 asignada con el valor 6
+Variable var2 asignada con el valor 33
+Variable var4 asignada con el valor 39
+Variable var3 asignada con el valor 12
+variable $var1 = 6
+variable $var2 = 33
+variable $var3 = 12
+variable $var4 = 39

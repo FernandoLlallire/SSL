@@ -19,8 +19,9 @@ void listOfSentences() {
         return;
     }
     else if (nextToken == tokens_new_line) {
-        sentence();
+        listOfSentences();
         Match(tokens_fdt);
+        return;
     }
 }
 
@@ -47,7 +48,7 @@ void sentence() {
         Match(tokens_identifier);
         int value = getVariable(getLexema());
         if(value != -1) {
-            printf("variable $%s = %d", getLexema(), getVariable(getLexema()));
+            printf("variable $%s = %d\n", getLexema(), getVariable(getLexema()));
         }
     }
 
