@@ -3,70 +3,64 @@
 int index_scaner = 0;
 
 char lexema[lexemaSize];
-bool flagToken = true;
 
 Tokens GetNextToken() {
-  if (flagToken) {
-    return scanner();
-  }
-  return tokens_invalid;
+  return scanner();
 }
 
 Tokens scanner() {
   char c = getchar();
   if (isFDT(c)) {
     clearLexema();
-    writeToken(c);
+    writeLexema(c);
     return tokens_fdt;
   } else if (isalpha(c)) {
     clearLexema();
-    writeToken(c);
+    writeLexema(c);
     isIdentifier();
     return tokens_identifier;
   } else if (isdigit(c)) {
     clearLexema();
-    writeToken(c);
+    writeLexema(c);
     isNumber();
     return tokens_number;
   } else if (isMultiply(c)) {
     clearLexema();
-    writeToken(c);
+    writeLexema(c);
     endToken();
     return tokens_multiply;
   } else if (isAdd(c)) {
     clearLexema();
-    writeToken(c);
+    writeLexema(c);
     endToken();
     return tokens_add;
   } else if (isLeftBracket(c)) {
     clearLexema();
-    writeToken(c);
+    writeLexema(c);
     endToken();
     return tokens_left_bracket;
   } else if (isRightBracket(c)) { 
     //endToken();
     //ungetc(')',stdin);
-    //writeToken(c);
+    //writeLexema(c);
     return tokens_right_bracket;
   } else if (isNewLine(c)) {
-    //writeToken(c);
+    //writeLexema(c);
     endToken();
     return tokens_new_line;
   } else if (isspace(c)) {
     //printf("tomo el carcter como espacio \n");
     return GetNextToken();
   } else if (isEquals(c)) {
-    writeToken(c);
+    writeLexema(c);
     endToken();
     return tokens_equals;
   } else if (isInterpreter(c)){
-    writeToken(c);
+    writeLexema(c);
     endToken();
     return tokens_interpreter;
   } else {
-    lexicalError();
     printf("caracter invalido '%c'\n", c);
-    flagToken = false;
     return tokens_invalid;
   }
 }
@@ -100,11 +94,7 @@ bool isNewLine(char c) {
   return c == '\n' ;
 }
 
-void lexicalError() {
-  printf("Error Lexico\n");
-}
-
-void writeToken(char c) {
+void writeLexema(char c) {
   if(index_scaner < lexemaSize) {
     lexema[index_scaner++] = c;
   }
@@ -116,7 +106,7 @@ char * getLexema() {
 }
 
 void endToken() {
-  writeToken('\0');
+  writeLexema('\0');
 }
 
 void clearLexema() {
@@ -130,7 +120,7 @@ void clearLexema() {
 void isIdentifier() {
   char c =  getchar();
   if ( isalpha(c) || isdigit(c) ) {
-    writeToken(c);
+    writeLexema(c);
     isIdentifier();
   } else {
     endToken();
@@ -146,7 +136,7 @@ void isIdentifier() {
 void isNumber() {
   char c = getchar();
   if (isdigit(c)) {
-    writeToken(c);
+    writeLexema(c);
     isNumber();
   } else {
     endToken();

@@ -1,15 +1,11 @@
 #include "scanner.h"
 
-bool flagToken = true;
 Tokens token;
 
 
 
 Tokens GetNextToken() {
-  if (flagToken) {
     return scanner();
-  }
-  return tokens_invalid;
 }
 
 Tokens scanner() {
@@ -34,7 +30,6 @@ Tokens scanner() {
     return tokens_equals;
   } else {
     lexicalError();
-    flagToken = false;
     return tokens_invalid;
   }
 }

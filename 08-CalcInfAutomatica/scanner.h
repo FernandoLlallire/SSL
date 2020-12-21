@@ -22,9 +22,8 @@ typedef enum{
 
 char * getLexema();
 
-void writeLexema(char);
+void writeLexema(char *);
 void lexicalError();
-void clearLexema();
 void isIdentifier();
 void isNumber();
 void endToken();
@@ -38,7 +37,7 @@ bool isEquals(char);
 bool isNewLine(char);
 bool isInterpreter(char);
 
-
+void ungetLex(char);
 Tokens token;
 Tokens scanner();
 Tokens GetNextToken();
