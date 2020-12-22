@@ -1,0 +1,9 @@
+Variable var1 asignada con el valor 6
+Variable var2 asignada con el valor 19
+Variable var4 asignada con el valor 25
+Variable var3 asignada con el valor 18
+variable $var1 = 6
+variable $var2 = 19
+variable $var3 = 18
+variable $var4 = 25
+Error in parser: syntax error
