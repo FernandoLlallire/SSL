@@ -17,7 +17,7 @@ extern int yylex();
 
 %token <number>        tokens_add
 %token <identifier>    tokens_identifier
-%token <number>        tokens_fdt
+%token <number>        tokens_fdt 0
 %token <number>        tokens_invalid
 %token <number>        tokens_multiply
 %token <number>        tokens_number
@@ -63,6 +63,6 @@ Factor: tokens_number {$$ = $1;}
 //    return GetNextToken();
 //}
 
-void parser(){
-  yyparse();
-}
+//void parser(){
+//  yyparse();
+//}

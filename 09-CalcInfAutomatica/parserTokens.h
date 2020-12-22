@@ -49,18 +49,18 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
+    tokens_fdt = 0,
     tokens_add = 258,
     tokens_identifier = 259,
-    tokens_fdt = 260,
-    tokens_invalid = 261,
-    tokens_multiply = 262,
-    tokens_number = 263,
-    tokens_lexicalError = 264,
-    tokens_left_bracket = 265,
-    tokens_right_bracket = 266,
-    tokens_equals = 267,
-    tokens_interpreter = 268,
-    tokens_new_line = 269
+    tokens_invalid = 260,
+    tokens_multiply = 261,
+    tokens_number = 262,
+    tokens_lexicalError = 263,
+    tokens_left_bracket = 264,
+    tokens_right_bracket = 265,
+    tokens_equals = 266,
+    tokens_interpreter = 267,
+    tokens_new_line = 268
   };
 #endif
 

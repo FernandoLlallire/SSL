@@ -6,4 +6,3 @@ variable $var1 = 6
 variable $var2 = 19
 variable $var3 = 18
 variable $var4 = 25
-Error in parser: syntax error
