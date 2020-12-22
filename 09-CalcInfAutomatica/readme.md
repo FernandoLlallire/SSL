@@ -91,6 +91,9 @@ sudo apt-get install flex
 A diferencia del TP8 ahora vamos a usar Yacc/Bison para esta parte. Yacc usa un Análisis Sintáctico Ascendente, el cual nos permite tener un GIC/BNF definido en `parser.y`.
 En cuanto al funcionamiento es el mismo, el `calc.c` llama al metodo `yyparse()`, el cual es el metodo del llamado a bison. Bison al ser el parser del programa es el encargado del llamado al scaner para poder indentificar los lexemas y a que token pertenecen, esto se logra llamando al metodo `extern int yylex();` el cual es creado por flex. Logrando de esta manera el mismo comportamiento que tenemos con los tepes anteriores, donde el parser es quien llama al scanner.
 Algo que si se cambio es que ahora la definicion de los tokens no se hacen en el scaner, si no que se delega esa funcionalidad a bison el cual crea un archivo con todas las definiciones necesarias en un header aparte llamado `parserTokens.h`, esto es necesario por el modo en que se estan importando los headers en este proyecto, si no fuera asi se dejaria que estuvieran solamente definidas en `parser.c`.
+```
+sudo apt-get install bison
+```
 
 **Analisis Semantico** este analisis es invocado por el Analsis sintactico, el cual al detectar una construccion semantica valida, invoca la rutina semantica correspondiente.
 
