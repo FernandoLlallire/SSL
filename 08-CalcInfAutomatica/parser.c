@@ -20,6 +20,7 @@ void listOfSentences() {
     }
     else if (nextToken == tokens_new_line) {
         listOfSentences();
+        Match(tokens_fdt);
         return;
     }
 }

@@ -96,7 +96,7 @@ Para el analisis sintactico nos basamos en el Analisis Sintactico Descendente Re
 El cual esta representado con este GIC
 
 ```
-Lista_de_sentencias: Sentencia FDT | Lista_de_sentencias '\n' Sentencia FDT
+Lista_de_sentencias: Sentencia FDT | Sentencia '\n' Lista_de_sentencias FDT
 Sentencia: $identificador | identificador = Expresion
 Expresion: Termino | Expresion + Termino
 Termino: Factor | Termino * Factor
