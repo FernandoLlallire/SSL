@@ -468,7 +468,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  7
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   23
+#define YYLAST   18
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  14
@@ -568,8 +568,8 @@ static const yytype_int16 yytoknum[] =
 static const yytype_int8 yypact[] =
 {
       -3,    -8,     2,     8,     0,    -2,    -9,    -9,    -9,    -3,
-      -9,    -9,    -2,     7,     6,    -9,    14,     1,    -2,    -2,
-      -9,    -9,     6,    -9
+      -9,    -9,    -2,     7,    -9,     6,    16,     1,    -2,    -2,
+      -9,    -9,    -9,    -9
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -585,7 +585,7 @@ static const yytype_int8 yydefact[] =
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -9,     9,    -9,     3,    -1,     4
+      -9,     9,    -9,     5,    -4,    -9
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -600,15 +600,13 @@ static const yytype_int8 yydefgoto[] =
 static const yytype_int8 yytable[] =
 {
        8,     1,    10,     5,    18,    11,     6,    12,     7,     2,
-      18,    21,    19,     9,    20,    17,     0,    22,    16,     0,
-       0,     0,     0,    23
+      18,    21,    19,     9,    22,    23,    20,    17,    16
 };
 
 static const yytype_int8 yycheck[] =
 {
        0,     4,     4,    11,     3,     7,     4,     9,     0,    12,
-       3,    10,     6,    13,     0,    12,    -1,    18,     9,    -1,
-      -1,    -1,    -1,    19
+       3,    10,     6,    13,    18,    19,     0,    12,     9
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -617,7 +615,7 @@ static const yytype_int8 yystos[] =
 {
        0,     4,    12,    15,    16,    11,     4,     0,     0,    13,
        4,     7,     9,    17,    18,    19,    15,    17,     3,     6,
-       0,    10,    18,    19
+       0,    10,    18,    18
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -1329,60 +1327,60 @@ yyreduce:
   case 4:
 #line 42 "parser.y"
                                                 {printf("variable $%s = %d\n", (yyvsp[0].identifier), getVariable((yyvsp[0].identifier)));}
-#line 1333 "parser.c"
+#line 1331 "parser.c"
     break;
 
   case 5:
 #line 43 "parser.y"
                                             { addVariable((yyvsp[-2].identifier), (yyvsp[0].number));
                                               printf("Variable %s asignada con el valor %d\n", (yyvsp[-2].identifier), (yyvsp[0].number));}
-#line 1340 "parser.c"
+#line 1338 "parser.c"
     break;
 
   case 6:
 #line 47 "parser.y"
                    {(yyval.number) = (yyvsp[0].number);}
-#line 1346 "parser.c"
+#line 1344 "parser.c"
     break;
 
   case 7:
 #line 48 "parser.y"
                                {(yyval.number) = (yyvsp[-2].number) + (yyvsp[0].number);}
-#line 1352 "parser.c"
+#line 1350 "parser.c"
     break;
 
   case 8:
 #line 51 "parser.y"
                 {(yyval.number) = (yyvsp[0].number);}
-#line 1358 "parser.c"
+#line 1356 "parser.c"
     break;
 
   case 9:
 #line 52 "parser.y"
                                  {(yyval.number) = (yyvsp[-2].number) * (yyvsp[0].number);}
-#line 1364 "parser.c"
+#line 1362 "parser.c"
     break;
 
   case 10:
 #line 55 "parser.y"
                       {(yyval.number) = (yyvsp[0].number);}
-#line 1370 "parser.c"
+#line 1368 "parser.c"
     break;
 
   case 11:
 #line 56 "parser.y"
                     {(yyval.number) = getVariable((yyvsp[0].identifier));}
-#line 1376 "parser.c"
+#line 1374 "parser.c"
     break;
 
   case 12:
 #line 57 "parser.y"
                                                      {(yyval.number) = (yyvsp[-1].number);}
-#line 1382 "parser.c"
+#line 1380 "parser.c"
     break;
 
 
-#line 1386 "parser.c"
+#line 1384 "parser.c"
 
       default: break;
     }

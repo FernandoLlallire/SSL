@@ -49,7 +49,7 @@ Expresion: Termino {$$ = $1;}
 ;
 
 Termino: Factor {$$ = $1;}
-| Termino tokens_multiply Factor {$$ = $1 * $3;}
+| Factor tokens_multiply Termino {$$ = $1 * $3;}
 ;
 
 Factor: tokens_number {$$ = $1;}

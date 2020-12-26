@@ -37,9 +37,7 @@ Tokens scanner() {
 bool isEquals (const int c) {
   return c == '=';
 }
-bool isCalculo(const int c) {
-  return c == '$';
-}
+
 bool isMultiply(const int c) {
   return c == '*';
 }
