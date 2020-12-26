@@ -45,7 +45,7 @@ Sentencia: tokens_interpreter tokens_identifier {printf("variable $%s = %d\n", $
 ;
 
 Expresion: Termino {$$ = $1;}
-| Expresion tokens_add Termino {$$ = $1 + $3;}
+| Termino tokens_add  Expresion {$$ = $1 + $3;}
 ;
 
 Termino: Factor {$$ = $1;}

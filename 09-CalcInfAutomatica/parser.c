@@ -553,7 +553,7 @@ static const yytype_int16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF (-9)
+#define YYPACT_NINF (-11)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -567,9 +567,9 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -3,    -8,     2,     8,     0,    -2,    -9,    -9,    -9,    -3,
-      -9,    -9,    -2,     7,    -9,     6,    16,     1,    -2,    -2,
-      -9,    -9,    -9,    -9
+      -3,    -8,     1,     4,     0,     3,   -11,   -11,   -11,    -3,
+     -11,   -11,     3,   -11,     8,     9,     6,     7,     3,     3,
+     -11,   -11,   -11,   -11
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -585,7 +585,7 @@ static const yytype_int8 yydefact[] =
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -9,     9,    -9,     5,    -4,    -9
+     -11,     5,   -11,   -10,    -1,   -11
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -599,14 +599,14 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       8,     1,    10,     5,    18,    11,     6,    12,     7,     2,
-      18,    21,    19,     9,    22,    23,    20,    17,    16
+       8,     1,    17,     5,     7,     6,    20,    10,    22,     2,
+      11,    18,    12,     9,    16,    19,     0,    21,    23
 };
 
 static const yytype_int8 yycheck[] =
 {
-       0,     4,     4,    11,     3,     7,     4,     9,     0,    12,
-       3,    10,     6,    13,    18,    19,     0,    12,     9
+       0,     4,    12,    11,     0,     4,     0,     4,    18,    12,
+       7,     3,     9,    13,     9,     6,    -1,    10,    19
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -615,7 +615,7 @@ static const yytype_int8 yystos[] =
 {
        0,     4,    12,    15,    16,    11,     4,     0,     0,    13,
        4,     7,     9,    17,    18,    19,    15,    17,     3,     6,
-       0,    10,    18,    18
+       0,    10,    17,    18
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -1345,7 +1345,7 @@ yyreduce:
 
   case 7:
 #line 48 "parser.y"
-                               {(yyval.number) = (yyvsp[-2].number) + (yyvsp[0].number);}
+                                {(yyval.number) = (yyvsp[-2].number) + (yyvsp[0].number);}
 #line 1350 "parser.c"
     break;
 
