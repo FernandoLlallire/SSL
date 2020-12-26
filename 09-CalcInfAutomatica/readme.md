@@ -102,11 +102,11 @@ Para el analisis sintactico nos basamos en el Análisis Sintáctico Ascendente.
 El cual esta representado con este GIC
 
 ```
-Lista_de_sentencias: Sentencia FDT | Lista_de_sentencias '\n' Sentencia FDT
+Lista_de_sentencias: Sentencia FDT | Lista_de_sentencias tokens_new_line Sentencia FDT
 Sentencia: $identificador | identificador = Expresion
 Expresion: Termino | Expresion + Termino
 Termino: Factor | Termino * Factor
-Factor: Number | Identifier | (Expresion)
+Factor: tokens_number | tokens_identifier | (Expresion)
 ``` 
 
 
